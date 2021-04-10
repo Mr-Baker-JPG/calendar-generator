@@ -1,0 +1,5 @@
+node_modules
+coverage
+jest.config.js
+babel.config.js
+jsconig.json
