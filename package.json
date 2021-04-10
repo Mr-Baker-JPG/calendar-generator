@@ -5,7 +5,7 @@
     "name": "Craig Baker",
     "email": "craig.d.baker@gmail.com"
   },
-  "main": "index.js",
+  "main": "src/index.js",
   "license": "MIT",
   "scripts": {
     "start": "node ./index.js",
