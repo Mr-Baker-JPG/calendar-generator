@@ -1,3 +1,3 @@
-import { generateWeek, generateMonth } from "./calendar"
+import { generateWeek, generateMonth, getWeekdays } from "./calendar"
 
-export { generateMonth, generateWeek }
+export { generateMonth, generateWeek, getWeekdays }
