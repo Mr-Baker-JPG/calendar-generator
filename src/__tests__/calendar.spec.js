@@ -168,6 +168,19 @@ describe("generateMonth", () => {
       toDate(new Date("May 2, 2021")),
     ])
   });
+
+  it('should be able to return a single array of the dates', () => {
+    const startDate = new Date("April 10, 2021")
+    const asMatrix = false
+    const monthGenerator = generateMonth(startDate, {asMatrix})
+  
+    const month = monthGenerator()
+    expect(month).toHaveLength(35)
+    expect(month).toContainEqual(toDate(new Date("May 1, 2021")))
+    expect(month).toContainEqual(toDate(new Date("March 31, 2021")))
+    expect(month).toContainEqual(toDate(new Date("April 2, 2021")))
+    expect(month).toContainEqual(toDate(new Date("April 21, 2021")))
+  });
 })
 
 describe("getWeekdays", () => {
@@ -230,4 +243,5 @@ describe("getWeekdays", () => {
       "Friday",
     ])
   });
+
 })

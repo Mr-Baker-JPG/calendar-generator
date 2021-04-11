@@ -29,13 +29,18 @@ export function generateWeek(date = new Date(), { includeWeekends = true, weekSt
   }
 }
 
-export function generateMonth(date = new Date(), { includeWeekends = true, weekStartsOn = 0 } = {}) {
+export function generateMonth(date = new Date(), { includeWeekends = true, weekStartsOn = 0, asMatrix = true } = {}) {
   const currStartOfMonth = compose(flip(startOfWeek)({weekStartsOn}), startOfMonth)(date)
   const month = Array(getWeeksInMonth(date)).fill([])
   return () => {
     const thisMonthStart = new Date(currStartOfMonth)
     const weekGenerator = generateWeek(thisMonthStart, {includeWeekends, weekStartsOn})
-    return month.map(weekGenerator)
+    return month.map(weekGenerator).reduce((dates, week) => {
+      if (asMatrix) {
+        return [...dates, week]
+      }
+      return [...dates, ...week]
+    },[])
   }
 }
 
